@@ -97,14 +97,19 @@
         var ui = new firebaseui.auth.AuthUI(firebase.auth());
         ui.start('#firebaseui-auth-container', {
           callbacks: {
+            signInSuccessWithAuthResult: function(authResult, redirectUrl) {
+              console.debug(authResult.credential);
+              return true;
+            },
             uiShown: function() {
               document.getElementById('loader').style.display = 'none';
             }
           },
+          signInFlow: 'popup',
+          signInSuccessUrl: '/callback',
           signInOptions: [
             firebase.auth.GithubAuthProvider.PROVIDER_ID
           ],
-          // Other config options...
         });
       });
     </script>
