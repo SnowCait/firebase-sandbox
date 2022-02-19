@@ -3,6 +3,9 @@
     "firebase": "^9.6.4",
     "firebaseui": "^6.0.0"
   },
+  "scripts": {
+    "build": "cd functions && npm run build"
+  },
   "engines": {
     "node": "16"
   }
