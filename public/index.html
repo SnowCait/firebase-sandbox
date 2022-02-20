@@ -99,6 +99,7 @@
           callbacks: {
             signInSuccessWithAuthResult: function(authResult, redirectUrl) {
               console.debug(authResult.credential);
+              sessionStorage.setItem('githubCredential', JSON.stringify(authResult.credential));
               return true;
             },
             uiShown: function() {
@@ -106,7 +107,7 @@
             }
           },
           signInFlow: 'popup',
-          signInSuccessUrl: '/callback',
+          signInSuccessUrl: '/login',
           signInOptions: [
             firebase.auth.GithubAuthProvider.PROVIDER_ID
           ],
